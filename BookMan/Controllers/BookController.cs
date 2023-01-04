@@ -37,28 +37,14 @@
             var model = Repository.Select();
             // khởi tạo view
             BookListView view = new BookListView(model);
-            if (!string.IsNullOrEmpty(path)) { view.RenderToFile(path); return; }
             view.Render();
         }
-        
         /// <summary>
-        /// kích hoạt chức năng nhập dữ liệu cho 1 cuốn sách
+        /// kích hoạt chức năng cập nhật
         /// </summary>
-        public void Create()
+        /// <param name="id"></param>
+        public void Update(int id)
         {
-            BookCreateView view = new BookCreateView();// khởi tạo object
-            view.Render(); // hiển thị ra màn hình
-        }
-        
-
-        /// <summary>
-        /// kích hoạt chức năng hiển thị danh sách
-        /// </summary>
-        public void List()
-        {
-            // lấy dữ liệu qua repository
-            var model = Repository.Select(id);
-            var view = new BookUpdateView(model);
             view.Render();
         }
     }
