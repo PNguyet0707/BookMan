@@ -7,8 +7,8 @@
     internal partial class Program
     {
         private static void ConfigRouter()
-        {
-            SimpleDataAccess context = new SimpleDataAccess();
+        {         
+            IDataAccess context = new BinaryDataAccess();
             BookController controller = new BookController(context);
             ShellController shell = new ShellController(context);
 
@@ -76,6 +76,13 @@
                 action: p => shell.Clear(true),
                 help: "[clear]rnUse with care");
 
+            r.Register(route: "save shell",
+                action: p => shell.Save(),
+                help: "[save shell]");
+
+            r.Register(route: "show stats",
+                action: p => controller.Stats(),
+                help: "[show stats]");
             //r.Register(route: "",
             //    action: null,
             //    help: "");            

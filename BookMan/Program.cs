@@ -12,9 +12,18 @@ namespace BookMan.ConsoleApp
             {
                 ViewHelp.Write("# Request >>> ", ConsoleColor.Green);
                 string request = Console.ReadLine();
-                Router.Instance.Forward(request);
-
-                Console.WriteLine();
+                try
+                {
+                    Router.Instance.Forward(request);
+                }
+                catch (Exception e)
+                {
+                    ViewHelp.WriteLine(e.Message, ConsoleColor.Red);
+                }
+                finally
+                {
+                    Console.WriteLine();
+                }
             }
         }
         private static void Help(Parameter parameter)

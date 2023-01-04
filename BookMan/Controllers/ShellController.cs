@@ -9,7 +9,7 @@ namespace BookMan.ConsoleApp.Controllers
     internal class ShellController : ControllerBase
     {
         protected Repository Repository;
-        public ShellController(SimpleDataAccess context)
+        public ShellController(IDataAccess context)
         {
             Repository = new Repository(context);
         }
@@ -61,5 +61,11 @@ namespace BookMan.ConsoleApp.Controllers
             Repository.Clear();
             Inform("The shell has been cleared");
         }
+        public void Save()
+        {
+            Repository.SaveChanges();
+            Success("Data save!");
+        }
+
     }
 }
