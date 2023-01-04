@@ -100,5 +100,6 @@
         {
             get { return System.IO.Path.GetFileName(_file); } // trả lại tên file ngắn gọn
         }
+       
     }
 }
