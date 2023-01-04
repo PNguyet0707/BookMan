@@ -47,5 +47,12 @@ namespace BookMan.ConsoleApp.Views // chú ý cách Visual Studio đặt tên na
             Console.WriteLine($"File:        {Model.File}");
             Console.WriteLine($"File Name:   {Model.FileName}");
         }
+        public void RenderToFile(string path)
+        {
+            ViewHelp.WriteLine($"Saving data to file '{path}'");
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(Model);
+            System.IO.File.WriteAllText(path, json);
+            ViewHelp.WriteLine("Done!");
+        }
     }
 }

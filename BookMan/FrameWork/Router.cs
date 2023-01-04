@@ -25,7 +25,10 @@ namespace Framework
     public class Router
     {
         // nhóm 3 lệnh dưới đây biến Router thành một singleton
-        private static Router _instance;
+        private static Router  _instance;
+        public static Router Instance => _instance ?? (_instance = new Router());
+        private readonly RoutingTable _routingTable;
+        private readonly Dictionary<string, string> _helpTable;
         private Router()
         {
             _routingTable = new RoutingTable();
@@ -36,10 +39,7 @@ namespace Framework
         // chỉ khi nào _instance == null mới tạo object. Một khi đã tạo object, _instance sẽ
         // không có giá trị null nữa.
         // vì là biến static, _instance một khi được khởi tạo sẽ tồn tại suốt chương trình
-        public static Router Instance => _instance ?? (_instance = new Router());
-        // lưu ý: ở đây đang sử dụng alias của Dictionary<string, ControllerAction> cho ngắn gọn
-        private readonly RoutingTable _routingTable;
-        private readonly Dictionary<string, string> _helpTable;
+        
         public string GetRoutes()
         {
             StringBuilder sb = new StringBuilder();
@@ -95,7 +95,7 @@ namespace Framework
             /// thành phần tham số của truy vấn
             /// </summary>
             public Parameter Parameter { get; private set; }
-            public Request(string request)
+            public Request(string  request)
             {
                 Analyze(request);
             }
