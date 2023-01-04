@@ -140,15 +140,13 @@ namespace BookMan.ConsoleApp.Controllers
             var view = new BookListView(model);
             Render(view);
         }
-        /// <summary>
-        /// kích hoạt chức năng cập nhật
-        /// </summary>
-        /// <param name="id"></param>
-        public void Update(int id)
+        public void Stats()
         {
-            view.Render();
+            var model = Repository.Stats();
+            var view = new BookStatsView(model);
+            Render(view);
         }
-    }
 
-    
+
+    }
 }
